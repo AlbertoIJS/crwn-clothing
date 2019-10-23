@@ -12,7 +12,6 @@ import HomePage from './pages/homepage/home-page.component';
 import ShopPage from './pages/shop/shop.component';
 import Header from './components/header/header.component';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-out/sign-in-and-sign-out.component';
-import SingIn from './components/sign-in/sign-in.component';
 
 
 
