@@ -1,13 +1,27 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import CustomButton from '../custom-button/custom-button.component';
+import CartItem from '../cart-item/cart-item.component';
+import { selectCartItems } from '../../redux/cart/cart.selectors';
+
 import './cart-dropdown.styles.scss';
 
-const CartDropDown = () => (
-  <section className="cart-dropdown">
-    <div className="cart-items"/>
-    <CustomButton >GO TO CHECK OUT</CustomButton>
+const CartDropDown = ({ cartItems }) => (
+  <section className='cart-dropdown'>
+    <div className='cart-items'>
+      {cartItems.map(cartItem => (
+        <CartItem key={cartItems.id} item={cartItem} />
+      ))}
+    </div>
+    <CustomButton>GO TO CHECK OUT</CustomButton>
   </section>
 );
 
-export default CartDropDown;
+// mapStateToProps(state, ownProps) => Object
+const mapStateToProps = state => ({
+  cartItems: selectCartItems(state)
+});
+
+// Connects a React component with a Redux Store
+export default connect(mapStateToProps)(CartDropDown);
