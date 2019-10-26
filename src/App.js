@@ -13,15 +13,13 @@ import HomePage from './pages/homepage/home-page.component';
 import ShopPage from './pages/shop/shop.component';
 import Header from './components/header/header.component';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-out/sign-in-and-sign-out.component';
-import CheckoutPage from './pages/checkout/checkout.component'
+import CheckoutPage from './pages/checkout/checkout.component';
 
-
-
-class App extends Component{  
+class App extends Component {
   unsubscribeFromAuth = null;
 
-  componentDidMount(){
-    const {setCurrentUser} = this.props;
+  componentDidMount() {
+    const { setCurrentUser } = this.props;
 
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
@@ -34,14 +32,16 @@ class App extends Component{
               ...snapShot.data()
             }
           });
-        }); 
-      } else {setCurrentUser(userAuth)}      
+        });
+      } else {
+        setCurrentUser(userAuth);
+      }
     });
-  };
+  }
 
-  componentWillUnmount(){
-    this.unsubscribeFromAuth();    
-  };
+  componentWillUnmount() {
+    this.unsubscribeFromAuth();
+  }
 
   render() {
     return (
@@ -51,12 +51,16 @@ class App extends Component{
           <Route exact path='/' component={HomePage} />
           <Route path='/shop' component={ShopPage} />
           <Route exact path='/checkout' component={CheckoutPage} />
-          <Route 
-          path='/signin' 
-          render={() => 
-          this.props.currentUser ? 
-          (<Redirect to='/'/>) :
-          (<SignInAndSignUpPage/>)} />
+          <Route
+            path='/signin'
+            render={() =>
+              this.props.currentUser ? (
+                <Redirect to='/' />
+              ) : (
+                <SignInAndSignUpPage />
+              )
+            }
+          />
         </Switch>
       </div>
     );
@@ -72,4 +76,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 // Connects the App component with the user reducer
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
