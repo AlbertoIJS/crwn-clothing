@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// React router
 import { Switch, Route, Redirect } from 'react-router-dom';
 // Redux connect
 import { connect } from 'react-redux';
@@ -12,6 +13,7 @@ import HomePage from './pages/homepage/home-page.component';
 import ShopPage from './pages/shop/shop.component';
 import Header from './components/header/header.component';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-out/sign-in-and-sign-out.component';
+import CheckoutPage from './pages/checkout/checkout.component'
 
 
 
@@ -48,6 +50,7 @@ class App extends Component{
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route path='/shop' component={ShopPage} />
+          <Route exact path='/checkout' component={CheckoutPage} />
           <Route 
           path='/signin' 
           render={() => 
