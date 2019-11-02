@@ -14,6 +14,7 @@ const CollectionPage = ({ collection: { title, items } }) => {
         {items.map(item => (
           <CollectionItem key={item.id} item={item} />
         ))}
+        {console.log(items)}
       </div>
     </div>
   );
