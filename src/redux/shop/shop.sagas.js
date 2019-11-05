@@ -11,8 +11,6 @@ import {
 } from './shop.actions';
 
 export function* fetchCollectionsAsync() {
-  yield console.log('fetchCollectionsAsync called');
-
   try {
     // Collection named: 'collection' from firebase
     const collectionRef = firestore.collection('collections');

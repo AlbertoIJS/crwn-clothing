@@ -16,16 +16,21 @@ const INITIAL_STATE = {
 // Check for user change
 const userReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case UserActionTypes.GOOGLE_SIGN_IN_SUCCESS:
-    case UserActionTypes.EMAIL_SIGN_IN_SUCCESS:
+    case UserActionTypes.SIGN_IN_SUCCESS:
       return {
         ...state, // Make a copy of the other props
         currentUser: action.payload, // Change only the props we care about
         error: null // Change the error to null if before was an error
       };
+      case UserActionTypes.SIGN_OUT_SUCCESS:
+        return {
+          ...state,
+          currentUser: null,
+          error: null
+        };
 
-    case UserActionTypes.GOOGLE_SIGN_IN_FAILURE:
-    case UserActionTypes.EMAIL_SIGN_IN_FAILURE:
+    case UserActionTypes.SIGN_IN_FAILURE:
+    case UserActionTypes.SIGN_OUT_FAILURE:
       return {
         ...state,
         error: action.payload
