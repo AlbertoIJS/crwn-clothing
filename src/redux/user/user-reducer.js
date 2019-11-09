@@ -22,15 +22,16 @@ const userReducer = (state = INITIAL_STATE, action) => {
         currentUser: action.payload, // Change only the props we care about
         error: null // Change the error to null if before was an error
       };
-      case UserActionTypes.SIGN_OUT_SUCCESS:
-        return {
-          ...state,
-          currentUser: null,
-          error: null
-        };
+    case UserActionTypes.SIGN_OUT_SUCCESS:
+      return {
+        ...state,
+        currentUser: null,
+        error: null
+      };
 
     case UserActionTypes.SIGN_IN_FAILURE:
     case UserActionTypes.SIGN_OUT_FAILURE:
+    case UserActionTypes.SIGN_UP_FAILURE:
       return {
         ...state,
         error: action.payload
