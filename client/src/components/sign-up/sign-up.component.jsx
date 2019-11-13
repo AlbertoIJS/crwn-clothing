@@ -5,8 +5,8 @@ import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 
 import { signUpStart } from '../../redux/user/user.actions';
-
-import './sign-up.styles.scss';
+// Styled components
+import { TitleContainer, SignUpContainer } from './sign-up.styles';
 
 const SignUp = ({ signUpStart }) => {
   const [userCredentials, setUsercredentials] = useState({
@@ -36,8 +36,8 @@ const SignUp = ({ signUpStart }) => {
   };
 
   return (
-    <section className='sign-up'>
-      <h2 className='title'>I do not have an account</h2>
+    <SignUpContainer>
+      <TitleContainer className='title'>I do not have an account</TitleContainer>
       <span>Sign up with email and password</span>
 
       <form className='sign-up-form' onSubmit={handleSubmit}>
@@ -75,7 +75,7 @@ const SignUp = ({ signUpStart }) => {
         />
         <CustomButton type='submit'>SIGN UP</CustomButton>
       </form>
-    </section>
+    </SignUpContainer>
   );
 };
 

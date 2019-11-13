@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
-import './sign-in.styles.scss';
-
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
+
+import {
+  SignInContainer,
+  SignInTitle,
+  ButtonsBarContainer
+} from './sign-in.styles';
 
 import {
   googleSignInStart,
@@ -31,8 +35,8 @@ const SignIn = ({ emailSignInStart, googleSignInStart }) => {
   };
 
   return (
-    <section className='sign-in'>
-      <h2>I already have an account</h2>
+    <SignInContainer>
+      <SignInTitle>I already have an account</SignInTitle>
       <span>Sing in with your email and password</span>
 
       <form onSubmit={handleSubmit}>
@@ -55,7 +59,7 @@ const SignIn = ({ emailSignInStart, googleSignInStart }) => {
           label='password'
           required
         />
-        <div className='buttons'>
+        <ButtonsBarContainer>
           <CustomButton type='submit'>Sign in</CustomButton>
           <CustomButton
             type='button'
@@ -64,9 +68,9 @@ const SignIn = ({ emailSignInStart, googleSignInStart }) => {
           >
             Sign in with Google
           </CustomButton>
-        </div>
+        </ButtonsBarContainer>
       </form>
-    </section>
+    </SignInContainer>
   );
 };
 
@@ -76,7 +80,4 @@ const mapDispatchToProps = dispatch => ({
     dispatch(emailSignInStart({ email, password }))
 });
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(SignIn);
+export default connect(null, mapDispatchToProps)(SignIn);
